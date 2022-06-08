@@ -1,1 +1,38 @@
-<p>This is NgClass directive example with boolean</p>
+<h2>Attribute directives:</h2>
+<h4>NgClass directive with ternary operator</h4>
+<p [ngClass]="isSpecial ? 'special' : ''" (click)="isSpecial = !isSpecial" class="select-none">Toggle text to change
+    font weight</p>
+<hr>
+
+<h4>NgClass directive with a method</h4>
+<p [ngClass]="currentClasses" (click)="setCurrentClasses()">This is initially saveable, unchanged, and special</p>
+<hr>
+
+<h4>NgStyle</h4>
+<p [ngStyle]="currentStyles" (click)="setCurrentStyles()">This is initially saveable, unchanged, and special</p>
+<hr>
+
+<h4>NgModel</h4>
+<label for="example-ngModel">Enter your name:</label>
+<input type="text" [(ngModel)]="name" id="example-ngModel">
+<p>Your name is: {{name || "NA"}}</p>
+<hr>
+
+<h2>Structural Directives:</h2>
+<h4>NgIf</h4>
+<button (click)="showText = !showText">Show Text</button>
+<ng-container *ngIf="showText">
+    <p>Text shown using NgIf directive</p>
+</ng-container>
+<hr>
+
+<h4>NgFor</h4>
+<p *ngFor="let item of items; let i = index; trackBy: trackByItems;">{{i+1}}. {{item.name}}</p>
+<hr>
+
+<h4>NgSwitch</h4>
+<div [ngSwitch]="switchCase">
+    <div *ngSwitchCase="1">Case 1</div>
+    <div *ngSwitchCase="2">Case 2</div>
+    <div *ngSwitchDefault>Case Default</div>
+</div>

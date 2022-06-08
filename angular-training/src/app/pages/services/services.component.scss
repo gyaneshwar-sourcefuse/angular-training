@@ -1,0 +1,11 @@
+.todo {
+    border: 1px solid grey;
+    padding: 0 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.todo p {
+    flex: 1;
+}
