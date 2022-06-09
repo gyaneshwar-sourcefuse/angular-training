@@ -14,6 +14,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http"
 import { InterceptorService } from './services/interceptor.service';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const USE_FAKE = new InjectionToken<string>('');
 @NgModule({
@@ -26,7 +27,7 @@ export const USE_FAKE = new InjectionToken<string>('');
     NavigationComponent,
     NotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [
     { provide: USE_FAKE, useValue: false },
     TestService,
