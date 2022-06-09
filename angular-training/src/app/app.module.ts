@@ -15,6 +15,8 @@ import { InterceptorService } from './services/interceptor.service';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TemplateDrivenFormComponent } from './pages/template-driven-form/template-driven-form.component';
+import { ReactiveFormComponent } from './pages/reactive-form/reactive-form.component';
 
 export const USE_FAKE = new InjectionToken<string>('');
 @NgModule({
@@ -26,6 +28,8 @@ export const USE_FAKE = new InjectionToken<string>('');
     ServicesComponent,
     NavigationComponent,
     NotFoundComponent,
+    TemplateDrivenFormComponent,
+    ReactiveFormComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
   providers: [

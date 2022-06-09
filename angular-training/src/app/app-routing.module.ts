@@ -3,7 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { DirectivesExampleComponent } from './pages/directives-example/directives-example.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ParentComponent } from './pages/parent/parent.component';
+import { ReactiveFormComponent } from './pages/reactive-form/reactive-form.component';
 import { ServicesComponent } from './pages/services/services.component';
+import { TemplateDrivenFormComponent } from './pages/template-driven-form/template-driven-form.component';
 
 const routes: Routes = [
   {
@@ -17,6 +19,14 @@ const routes: Routes = [
   {
     path: 'services',
     component: ServicesComponent,
+  },
+  {
+    path: 'template-driven-form',
+    component: TemplateDrivenFormComponent,
+  },
+  {
+    path: 'reactive-form',
+    component: ReactiveFormComponent,
   },
   {
     path: '',

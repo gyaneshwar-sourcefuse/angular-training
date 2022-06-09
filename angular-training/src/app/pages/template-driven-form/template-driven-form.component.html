@@ -1,0 +1,63 @@
+<div class="row align-items-center justify-content-center m-0">
+    <div class="col-4">
+        <h2>Template Driven Form</h2>
+        <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+            <div class="mb-3">
+                <label for="name">Name:</label>
+                <input type="text" class="form-control" placeholder="Sama Gyani" name="name" required
+                    [(ngModel)]="user.name" #name="ngModel" minlength="5">
+                <div [hidden]="name.pristine || name.valid" class="mt-1 text-danger">
+                    <ng-container *ngIf="name.errors?.['required']">
+                        Name is required
+                    </ng-container>
+                    <ng-container *ngIf="name.errors?.['minlength']">
+                        Name must be 5 characters
+                    </ng-container>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" placeholder="sama.gyani@gmail.com" name="email" required
+                    [(ngModel)]="user.email" #email="ngModel">
+                <div [hidden]="email.pristine || email.valid" class="mt-1 text-danger">
+                    <ng-container *ngIf="email.errors?.['required']">
+                        Email is required
+                    </ng-container>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="gender">Gender:</label>
+                <select name="gender" id="gender" class="form-control" [(ngModel)]="user.gender" required
+                    #gender="ngModel">
+                    <option value="">Select gender</option>
+                    <option *ngFor="let gender of genders" [value]="gender">{{gender}}</option>
+                </select>
+                <div [hidden]="gender.valid || gender.pristine" class="mt-1 text-danger">
+                    <ng-container *ngIf="gender.errors?.['required']">
+                        Gender is required
+                    </ng-container>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="note">Note:</label>
+                <textarea name="note" id="note" rows="3" class="form-control" placeholder="Enter note"
+                    [(ngModel)]="user.note" #note="ngModel"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="agree-tc">
+                    <input type="checkbox" class="me-2" id="agree-tc" name="agreeTc" required [(ngModel)]="user.agreeTc"
+                        #agreeTc="ngModel">
+                    <span>Agree to terms &amp; conditions*</span>
+                </label>
+                <div [hidden]="agreeTc.valid || agreeTc.pristine" class="mt-1 text-danger">
+
+                    <ng-container *ngIf="agreeTc.errors?.['required']">
+                        Check terms &amp; conditions
+                    </ng-container>
+                </div>
+            </div>
+            <button class="btn btn-light border me-2" type="reset">Reset</button>
+            <button class="btn btn-success" type="submit" [disabled]="!userForm.form.valid">Submit</button>
+        </form>
+    </div>
+</div>
