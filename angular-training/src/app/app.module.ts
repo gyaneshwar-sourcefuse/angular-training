@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { DirectivesExampleComponent } from './pages/directives-example/directives-example.component';
 import { ParentComponent } from './pages/parent/parent.component';
 import { ChildComponent } from './pages/child/child.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TestService } from './services/test.service';
 import { AnotherService } from './services/another.service';
 import { ServicesComponent } from './pages/services/services.component';
@@ -31,7 +31,7 @@ export const USE_FAKE = new InjectionToken<string>('');
     TemplateDrivenFormComponent,
     ReactiveFormComponent
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [
     { provide: USE_FAKE, useValue: false },
     TestService,
