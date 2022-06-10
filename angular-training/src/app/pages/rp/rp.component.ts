@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { fromEvent, map, Observable, Observer } from 'rxjs';
+import { debounceTime, distinctUntilChanged, filter, fromEvent, map, Observable, Observer, switchMap, tap } from 'rxjs';
+import { ajax } from 'rxjs/ajax'
 
 @Component({
   selector: 'app-rp',
@@ -7,6 +8,7 @@ import { fromEvent, map, Observable, Observer } from 'rxjs';
   styleUrls: ['./rp.component.scss']
 })
 export class RpComponent implements OnInit {
+  items$!: Observable<any[]>;
 
   constructor() {
     function sequenceSubscriber(observer: Observer<number>) {
@@ -35,21 +37,16 @@ export class RpComponent implements OnInit {
     const element = document.getElementById('test')! as HTMLInputElement;
     const event = fromEvent<KeyboardEvent>(element, 'keydown');
 
-    event.pipe(
-      map((val: KeyboardEvent) => {
-        console.log("map", val.code)
-        return val;
-      })
-    ).subscribe({
-      next: (res: KeyboardEvent) => {
-        if (res.code === 'Escape') {
-          element.value = "";
-        }
-        console.log("Res",res.key);
-      },
-      error: (err: Error) => console.log('err', err),
-      complete: () => console.log('Finished')
-    });
+    this.items$ = event.pipe(
+      map((val) => (val.target as HTMLInputElement).value),
+      filter((text) => text.length > 2),
+      debounceTime(200),
+      distinctUntilChanged(),
+      tap((searchTerm: string) => console.log("Tap:", searchTerm)),
+      switchMap(searchTerm => ajax(`https://api.github.com/search/users?q=${searchTerm}`)),
+      map((data: any) => data?.response?.items ?? [])
+    );
+    
   }
 
 }

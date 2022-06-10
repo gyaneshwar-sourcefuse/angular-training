@@ -1,1 +1,19 @@
-<input type="text" id="test" name="test" />
+
+<div class="container-fluid">
+    
+    <div>From Event:</div>
+    <input type="text" id="test" name="test" class="form-control mb-4" placeholder="search github username..." />
+    <div class="row">
+        <div class="col-lg-2" *ngFor="let item of items$ | async">
+            <div class="card mb-3">
+                <img [src]="item.avatar_url" [alt]="item.login">
+                <div class="card-body">
+                    <p class="m-0">Name: {{item.login}}</p>
+                    <div>
+                    <a [href]="item.html_url" target="_blank">Github</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
