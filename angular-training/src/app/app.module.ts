@@ -17,6 +17,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TemplateDrivenFormComponent } from './pages/template-driven-form/template-driven-form.component';
 import { ReactiveFormComponent } from './pages/reactive-form/reactive-form.component';
+import { RpComponent } from './pages/rp/rp.component';
 
 export const USE_FAKE = new InjectionToken<string>('');
 @NgModule({
@@ -29,7 +30,8 @@ export const USE_FAKE = new InjectionToken<string>('');
     NavigationComponent,
     NotFoundComponent,
     TemplateDrivenFormComponent,
-    ReactiveFormComponent
+    ReactiveFormComponent,
+    RpComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, NgbModule, ReactiveFormsModule],
   providers: [
