@@ -1,4 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { USE_FAKE } from 'src/app/app.module';
 import { AnotherService } from 'src/app/services/another.service';
 import { RestService } from 'src/app/services/rest.service';
@@ -10,7 +11,7 @@ import { TestService } from 'src/app/services/test.service';
   styleUrls: ['./services.component.scss'],
 })
 export class ServicesComponent implements OnInit {
-  todos: any[] = [];
+  todos$!: Observable<any[]>;
   constructor(
     @Inject(USE_FAKE) private useFake: boolean,
     private testService: TestService,
@@ -30,10 +31,6 @@ export class ServicesComponent implements OnInit {
   }
 
   posts() {
-    this.restService.posts().subscribe(
-      (result: any) => {
-        this.todos = result;
-      }
-    );
+    this.todos$ = this.restService.posts();
   }
 }

@@ -2,7 +2,7 @@
 <h2>Services Example - Check Console</h2>
 
 <h4>Todos</h4>
-<div *ngFor="let todo of todos" class="todo">
+<div *ngFor="let todo of todos$ | async" class="todo">
     <p>{{todo.title}}</p>
     <span>X</span>
 </div>
